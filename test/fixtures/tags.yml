@@ -1,0 +1,23 @@
+# == Schema Information
+# Schema version: 20101223154012
+#
+# Table name: tags
+#
+#  id         :integer         primary key
+#  name       :string(255)
+#  article_id :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  article_id: 1
+  semantics_table: 1
+
+two:
+  name: MyString
+  article_id: 1
+  semantics_table: 1

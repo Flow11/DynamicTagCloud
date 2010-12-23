@@ -1,0 +1,21 @@
+# == Schema Information
+# Schema version: 20101223132714
+#
+# Table name: articles
+#
+#  id         :integer         not null, primary key
+#  title      :string(255)
+#  content    :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  content: MyString
+
+two:
+  title: MyString
+  content: MyString

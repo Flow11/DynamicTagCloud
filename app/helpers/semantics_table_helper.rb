@@ -1,0 +1,2 @@
+module SemanticsTableHelper
+end

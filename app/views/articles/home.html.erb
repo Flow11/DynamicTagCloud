@@ -1,0 +1,23 @@
+<h1>Nuage de tag</h1>
+<% Tag.all.each do |tag| %>
+	<%= tag.name+" " %>
+<% end %>
+<%= @b %>
+
+<table>
+<% Article.all.each do |article| %>
+	<tr>
+		<td><h1><%= article.title %></h1></td>
+	</tr>
+	<tr>
+		<td><h3>
+		<% article.tags.all.each do |tag| %>
+			<%= tag.name+" "%>
+		<% end %>
+		</h3></td>
+	</tr>
+	<tr>
+		<td><%= article.content %></td>
+	</tr>
+<% end %>
+</table>
