@@ -1,4 +1,10 @@
 DynamicTagCloud::Application.routes.draw do
+  resources :tags
+
+  resources :articles
+  
+  match "home" => "Articles#home"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
