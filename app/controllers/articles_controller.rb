@@ -1,7 +1,11 @@
 class ArticlesController < ApplicationController
   
   def home
-	@a = []
+	
+  end
+  
+  def maj_links
+  	@a = []
 	@b = []
 	Article.all.each do |article|
 		article.tags.all.each do |tag1|
@@ -21,8 +25,6 @@ class ArticlesController < ApplicationController
 		l = Links.new(:id_tag=>y[0],:occurrence=>y[2],:tag_id=>y[1])
 		l.save
 	end
-	
-	
   end
   
   # GET /articles

@@ -1,9 +1,33 @@
 <h1>Nuage de tag</h1>
-<% Tag.all.each do |tag| %>
-	<%= tag.name+" " %>
-<% end %>
-<%= @b %>
+<div id="tags">
+<% 
+	if params[:tag].nil?
+		Tag.all.each do |tag|
+			%>
+			<%=
+				link_to tag.name,"/home?tag="+tag.id.to_s
+			%>
+			<%
+		end
+	end
+	
+	if !(params[:tag].nil?)
+		%><%= link_to "retour","/home" %><br /><%
+		l = Links.where(:tag_id=>params[:tag])
+		if l.size>0
+			l.each do |link|
+				tag = Tag.find(link.id_tag)
+				%>
+					<%= link_to tag.name,"/home?tag="+tag.id.to_s %>
+				<%
+			end
+		else
+			%>Pas de mot clé associé<%
+		end
+	end
 
+%>
+</div>
 <table>
 <% Article.all.each do |article| %>
 	<tr>
