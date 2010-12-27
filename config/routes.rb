@@ -4,6 +4,7 @@ DynamicTagCloud::Application.routes.draw do
   resources :articles
   
   match "home" => "Articles#home"
+  match "maj" => "Articles#maj_links"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

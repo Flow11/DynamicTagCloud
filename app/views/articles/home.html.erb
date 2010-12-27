@@ -1,18 +1,13 @@
+<%= link_to "MAJ des liens sémantiques","/maj" %><br />
+<%= link_to "Gestion des tags","/tags" %><br />
+<%= link_to "Gestion des articles","/articles" %><br />
 <h1>Nuage de tag</h1>
 <div id="tags">
 <% 
-	if params[:tag].nil?
-		Tag.all.each do |tag|
-			%>
-			<%=
-				link_to tag.name,"/home?tag="+tag.id.to_s
-			%>
-			<%
-		end
-	end
-	
-	if !(params[:tag].nil?)
-		%><%= link_to "retour","/home" %><br /><%
+	if !params[:tag].nil?
+%>		
+			<%= link_to "retour","/home" %><br />
+		<%
 		l = Links.where(:tag_id=>params[:tag])
 		if l.size>0
 			l.each do |link|
@@ -22,10 +17,20 @@
 				<%
 			end
 		else
-			%>Pas de mot clé associé<%
+			%>
+				Pas de mot clé associé
+			<%
 		end
 	end
-
+	%>
+	<%
+	if params[:tag].nil?
+		Tag.all.each do |tag|
+			%>
+				<%= link_to tag.name,"/home?tag="+tag.id.to_s %>
+			<%
+		end
+	end
 %>
 </div>
 <table>

@@ -25,6 +25,7 @@ class ArticlesController < ApplicationController
 		l = Links.new(:id_tag=>y[0],:occurrence=>y[2],:tag_id=>y[1])
 		l.save
 	end
+	redirect_to "/home"
   end
   
   # GET /articles
