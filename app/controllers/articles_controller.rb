@@ -1,7 +1,7 @@
-class ArticlesController < ApplicationController
+﻿class ArticlesController < ApplicationController
   
   def home
-	
+
   end
   
   def maj_links
