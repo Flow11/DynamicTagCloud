@@ -19,6 +19,16 @@
     <%= f.label :content %><br />
     <%= f.text_field :content %>
   </div>
+  <h3>Tags</h3>
+  <table>
+	<% Tag.all.each do |tag| %>
+	<tr>
+		<td><%= f.label tag.name %><br /></td>
+		<td><%= check_box :p , tag.name,:valeur_on=>tag.id, :valeur_off=>0 %></td>
+	</tr>
+  <% end %>
+  </table>
+  <br />
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -32,7 +32,7 @@ class ArticlesController < ApplicationController
   # GET /articles.xml
   def index
     @articles = Article.all
-
+	
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @articles }
@@ -70,11 +70,21 @@ class ArticlesController < ApplicationController
   # POST /articles.xml
   def create
     @article = Article.new(params[:article])
-
+	
     respond_to do |format|
       if @article.save
+		params[:p].each do |key,value|
+			if(value.to_i==1)
+				@a = ArticlesTags.new
+				@a.tag_id = Tag.where(:name=>key).first.id
+				@a.article_id = @article.id
+				@a.save
+			end
+		end
+	  
         format.html { redirect_to(@article, :notice => 'Article was successfully created.') }
         format.xml  { render :xml => @article, :status => :created, :location => @article }
+		
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @article.errors, :status => :unprocessable_entity }
