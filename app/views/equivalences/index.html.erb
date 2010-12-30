@@ -1,0 +1,27 @@
+<h1>Listing equivalences</h1>
+
+<table>
+  <tr>
+    <th>Tag1</th>
+    <th>Tag2</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @equivalences.each do |equivalence| %>
+  <tr>
+    <td><%= equivalence.tag1 %></td>
+    <td><%= equivalence.tag2 %></td>
+    <td><%= link_to 'Voir', equivalence %></td>
+    <td><%= link_to 'Editer', edit_equivalence_path(equivalence) %></td>
+    <td><%= link_to 'Detruire', equivalence, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Nouvel Equivalence', new_equivalence_path %>
+<br />
+<%= link_to("retour","/home") %>

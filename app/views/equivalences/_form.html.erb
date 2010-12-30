@@ -1,0 +1,30 @@
+<%= form_for(@equivalence) do |f| %>
+  <% if @equivalence.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@equivalence.errors.count, "error") %> prohibited this equivalence from being saved:</h2>
+
+      <ul>
+      <% @equivalence.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :tag1 %><br />
+    <%= f.text_field :tag1 %>
+  </div>
+  <div class="field">
+    <%= f.label :tag2 %><br />
+    <%= f.text_field :tag2 %>
+  </div>
+  <h3>Tags</h3>
+	<% Tag.all.each do |tag| %>
+              <%= tag.name %><br />
+        <% end %>
+        <br />
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
