@@ -1,6 +1,7 @@
 <%= link_to "MAJ des liens sémantiques","/maj" %><br />
 <%= link_to "Gestion des tags","/tags" %><br />
 <%= link_to "Gestion des articles","/articles" %><br />
+<%= link_to "Gestion des equivalences","/equivalences" %><br />
 <h1>Nuage de tag</h1>
 <div id="tags">
 <% 
@@ -32,8 +33,8 @@
 	Article.all.each do |article|
 		affichage = false
 		if !params[:tag].nil?
-			article.tags.all.each do |tag|
-				if tag.id.to_i == params[:tag].to_i
+			ArticlesTags.where(:article_id=>article.id).each do |item|
+				if item.tag_id.to_i == params[:tag].to_i
 					affichage = true
 				end
 			end
@@ -47,8 +48,8 @@
 	</tr>
 	<tr>
 		<td><h3>
-		<% article.tags.all.each do |tag| %>
-			<%= tag.name+" "%>
+		<% ArticlesTags.where(:article_id=>article.id).each do |item| %>
+			<%= Tag.find(item.tag_id).name+" "%>
 		<% end %>
 		</h3></td>
 	</tr>

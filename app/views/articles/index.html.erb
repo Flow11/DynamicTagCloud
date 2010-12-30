@@ -13,13 +13,16 @@
   <tr>
     <td><%= article.title %></td>
     <td><%= article.content %></td>
-    <td><%= link_to 'Show', article %></td>
-    <td><%= link_to 'Edit', edit_article_path(article) %></td>
-    <td><%= link_to 'Destroy', article, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Voir', article %></td>
+    <td><%= link_to 'Editer', edit_article_path(article) %></td>
+    <td><%= link_to 'Detruire', article, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Article', new_article_path %>
+<%= link_to 'Nouvel article', new_article_path %>
+
+<br />
+<%= link_to("retour","/home") %>

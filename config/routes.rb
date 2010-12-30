@@ -1,4 +1,8 @@
 DynamicTagCloud::Application.routes.draw do
+  resources :equivs
+
+  resources :equivalences
+
   resources :tags
 
   resources :articles

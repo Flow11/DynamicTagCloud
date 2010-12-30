@@ -11,6 +11,6 @@
 #
 
 class Tag < ActiveRecord::Base
-	has_and_belongs_to_many :articles
+	has_many :articles, :through => :article_id
 	has_many :links
 end

@@ -1,6 +1,6 @@
 class CreateArticlesTags < ActiveRecord::Migration
   def self.up
-    create_table :articles_tags, {:id => false, :force => true} do |t|
+    create_table :articles_tags do |t|
       t.integer :article_id
       t.integer :tag_id
 
