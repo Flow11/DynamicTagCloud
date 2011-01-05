@@ -33,13 +33,6 @@ ActiveRecord::Schema.define(:version => 20101230074448) do
     t.datetime "updated_at"
   end
 
-  create_table "equivs", :force => true do |t|
-    t.integer  "tag_id1"
-    t.integer  "tag_id2"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "links", :force => true do |t|
     t.integer  "id_tag"
     t.integer  "occurrence"

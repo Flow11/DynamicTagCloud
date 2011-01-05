@@ -11,21 +11,30 @@
 			@html << link_to(tag.name,"/home?tag="+tag.id.to_s)+" "
 		end
 	else
-		@html << "Tag sélectionné: "+Tag.find(params[:tag]).name
+		@html << "Tag sélectionné: "
+		tags_id = []
+		tags_id_s = params[:tag].split("-")
+		tags_id_s.each do |tag_id_s|
+			tags_id << tag_id_s.to_i
+			@html << Tag.find(tag_id_s.to_i).name + " "
+		end
 		@html << "<br />"
 		@html << link_to("retour","/home")
 		@html << "<br />"
-		l = Links.where(:tag_id=>params[:tag]).order(:occurrence).limit(10)
+		l = Links.find_all_by_id_tag(tags_id)
 		if l.size>0
 			l.each do |link|
-				tag = Tag.find(link.id_tag)
-				@html << link_to(tag.name,"/home?tag="+tag.id.to_s)+" "
+				if !tags_id.find{|id| id == link.tag_id}
+					tag = Tag.find(link.tag_id)
+					@html << link_to(tag.name,"/home?tag="+params[:tag]+"-"+tag.id.to_s)+" "
+				end
 			end
 		else
 			@html << "Pas de mot clé associé"
 		end
 	end
 %>
+<%= tags_id %>
 <%= raw @html %>
 </div>
 <table>
@@ -33,9 +42,14 @@
 	Article.all.each do |article|
 		affichage = false
 		if !params[:tag].nil?
+			affichage = true
+			tags_article = []
 			ArticlesTags.where(:article_id=>article.id).each do |item|
-				if item.tag_id.to_i == params[:tag].to_i
-					affichage = true
+				tags_article << item.tag_id.to_i
+			end
+			tags_id.each do |id_tag|
+				if !tags_article.find{|id| id == id_tag }
+					affichage = false
 				end
 			end
 		else
