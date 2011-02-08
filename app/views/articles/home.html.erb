@@ -2,9 +2,11 @@
 <%= link_to "Gestion des tags","/tags" %><br />
 <%= link_to "Gestion des articles","/articles" %><br />
 <%= link_to "Gestion des equivalences","/equivalences" %><br />
+<%= link_to "Gestion des implications","/implications" %><br />
+<%= link_to "Sphere 3D","/sphere" %><br />
 <h1>Nuage de tag </h1>
 <div id="tags">
-<% 
+<%
 	@html = ""
 	if params[:tag].nil?
 		Tag.all.each do |tag|
@@ -33,6 +35,7 @@
 			@html << "Pas de mot clé associé"
 		end
 	end
+
 %>
 <%= tags_id %>
 <%= raw @html %>
@@ -50,6 +53,17 @@
 			tags_id.each do |id_tag|
 				if !tags_article.find{|id| id == id_tag }
 					affichage = false
+				end
+				
+				Implication.where(:tag_1=>Tag.find(id_tag).name).each do |imp_a|
+					if tags_article.find{|id| id == Tag.where(:name=>imp_a.tag_2).first.id.to_i}
+						affichage = true
+					end
+				end
+				Implication.where(:tag_2=>Tag.find(id_tag).name).each do |imp_b|
+					if tags_article.find{|id| id == Tag.where(:name=>imp_b.tag_1).first.id.to_i}
+						affichage = true
+					end
 				end
 			end
 		else

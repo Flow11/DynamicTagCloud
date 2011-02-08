@@ -1,5 +1,6 @@
 DynamicTagCloud::Application.routes.draw do
-  resources :equivs
+
+  resources :implications
 
   resources :equivalences
 
@@ -8,6 +9,7 @@ DynamicTagCloud::Application.routes.draw do
   resources :articles
   
   match "home" => "Articles#home"
+  match "sphere" => "Articles#sphere"
   match "maj" => "Articles#maj_links"
 
   # The priority is based upon order of creation:

@@ -1,0 +1,26 @@
+<h1>Listing implications</h1>
+
+<table>
+  <tr>
+    <th>Tag 1</th>
+    <th>Tag 2</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @implications.each do |implication| %>
+  <tr>
+    <td><%= implication.tag_1 %></td>
+    <td><%= implication.tag_2 %></td>
+    <td><%= link_to 'Show', implication %></td>
+    <td><%= link_to 'Edit', edit_implication_path(implication) %></td>
+    <td><%= link_to 'Destroy', implication, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Implication', new_implication_path %>
+<%= link_to("retour","/home") %>

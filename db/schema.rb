@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101230074448) do
+ActiveRecord::Schema.define(:version => 20110110142824) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -29,6 +29,13 @@ ActiveRecord::Schema.define(:version => 20101230074448) do
   create_table "equivalences", :force => true do |t|
     t.string   "tag1"
     t.string   "tag2"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "implications", :force => true do |t|
+    t.string   "tag_1"
+    t.string   "tag_2"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
